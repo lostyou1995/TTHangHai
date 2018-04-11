@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="db_thongtinthuyenvienModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tb_coquan">
+    <Key>
+      <PropertyRef Name="MaCoQuan" />
+    </Key>
+    <Property Name="MaCoQuan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenCoQuan" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="TruongCoQuan" Type="Int32" />
+    <NavigationProperty Name="tb_loaitau" Relationship="Self.FK_tb_loaitau_tb_coquan" FromRole="tb_coquan" ToRole="tb_loaitau" />
+    <NavigationProperty Name="tb_tau_doanhnghiep" Relationship="Self.FK_tb_tau_doanhnghiep_tb_coquan" FromRole="tb_coquan" ToRole="tb_tau_doanhnghiep" />
+    <NavigationProperty Name="tb_thuyen" Relationship="Self.FK_tb_thuyen_tb_coquan" FromRole="tb_coquan" ToRole="tb_thuyen" />
+  </EntityType>
+  <EntityType Name="tb_danhsachthuyenvien">
+    <Key>
+      <PropertyRef Name="Tau" />
+      <PropertyRef Name="ThuyenVien" />
+      <PropertyRef Name="ThoiGian" />
+    </Key>
+    <Property Name="Tau" Type="Int32" Nullable="false" />
+    <Property Name="ThuyenVien" Type="Int32" Nullable="false" />
+    <Property Name="TrangThai" Type="Boolean" />
+    <Property Name="ThoiGian" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="tb_thuyen" Relationship="Self.FK_tb_danhsachthuyenvien_tb_thuyen" FromRole="tb_danhsachthuyenvien" ToRole="tb_thuyen" />
+    <NavigationProperty Name="tb_thuyenvien" Relationship="Self.FK_tb_danhsachthuyenvien_tb_thuyenvien" FromRole="tb_danhsachthuyenvien" ToRole="tb_thuyenvien" />
+  </EntityType>
+  <EntityType Name="tb_doanhnghiep">
+    <Key>
+      <PropertyRef Name="MSDoanhNghiep" />
+    </Key>
+    <Property Name="MSDoanhNghiep" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenDoanhNghiep" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="DienThoai" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="SoFax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NgayCap" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="NoiCap" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CoQuanPheDuyet" Type="Int32" />
+    <Property Name="ChuDoanhNghiep" Type="Int32" />
+    <NavigationProperty Name="tb_tau_doanhnghiep" Relationship="Self.FK_tb_tau_doanhnghiep_tb_doanhnghiep" FromRole="tb_doanhnghiep" ToRole="tb_tau_doanhnghiep" />
+  </EntityType>
+  <EntityType Name="tb_loaitau">
+    <Key>
+      <PropertyRef Name="LoaiTau" />
+    </Key>
+    <Property Name="LoaiTau" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TrangThai" Type="Boolean" />
+    <Property Name="CoQuanThem" Type="Int32" />
+    <NavigationProperty Name="tb_coquan" Relationship="Self.FK_tb_loaitau_tb_coquan" FromRole="tb_loaitau" ToRole="tb_coquan" />
+    <NavigationProperty Name="tb_thuyen" Relationship="Self.FK_tb_thuyen_tb_loaitau" FromRole="tb_loaitau" ToRole="tb_thuyen" />
+  </EntityType>
+  <EntityType Name="tb_taikhoan">
+    <Key>
+      <PropertyRef Name="TenDangNhap" />
+    </Key>
+    <Property Name="TenDangNhap" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TrangThai" Type="Boolean" />
+    <Property Name="CoQuanDuyet" Type="Int32" />
+    <Property Name="TKThuyenVien" Type="Boolean" />
+    <Property Name="TKCoQuan" Type="Boolean" />
+    <Property Name="TkDoanhNghiep" Type="Boolean" />
+    <Property Name="EmailDangKy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SDTDangKy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tb_thuyenvien" Relationship="Self.FK_tb_thuyenvien_tb_taikhoan" FromRole="tb_taikhoan" ToRole="tb_thuyenvien" />
+  </EntityType>
+  <EntityType Name="tb_tau_doanhnghiep">
+    <Key>
+      <PropertyRef Name="Tau" />
+      <PropertyRef Name="DoanhNghiep" />
+    </Key>
+    <Property Name="Tau" Type="Int32" Nullable="false" />
+    <Property Name="DoanhNghiep" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CoQuanPheDuyet" Type="Int32" />
+    <Property Name="NgayDuyet" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="TrangThai" Type="Boolean" />
+    <NavigationProperty Name="tb_coquan" Relationship="Self.FK_tb_tau_doanhnghiep_tb_coquan" FromRole="tb_tau_doanhnghiep" ToRole="tb_coquan" />
+    <NavigationProperty Name="tb_doanhnghiep" Relationship="Self.FK_tb_tau_doanhnghiep_tb_doanhnghiep" FromRole="tb_tau_doanhnghiep" ToRole="tb_doanhnghiep" />
+    <NavigationProperty Name="tb_thuyen" Relationship="Self.FK_tb_tau_doanhnghiep_tb_thuyen" FromRole="tb_tau_doanhnghiep" ToRole="tb_thuyen" />
+  </EntityType>
+  <EntityType Name="tb_thuyen">
+    <Key>
+      <PropertyRef Name="MaTau" />
+    </Key>
+    <Property Name="MaTau" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SoHieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TenTau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IMO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="QuocTich" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LoaiTau" Type="Int32" />
+    <Property Name="TongDungTichMay" Type="Double" />
+    <Property Name="TongCSMayChinh" Type="Double" />
+    <Property Name="ChuTau" Type="Int32" />
+    <Property Name="CoQuanPheDuyet" Type="Int32" />
+    <Property Name="TrangThai" Type="Boolean" />
+    <NavigationProperty Name="tb_coquan" Relationship="Self.FK_tb_thuyen_tb_coquan" FromRole="tb_thuyen" ToRole="tb_coquan" />
+    <NavigationProperty Name="tb_danhsachthuyenvien" Relationship="Self.FK_tb_danhsachthuyenvien_tb_thuyen" FromRole="tb_thuyen" ToRole="tb_danhsachthuyenvien" />
+    <NavigationProperty Name="tb_loaitau" Relationship="Self.FK_tb_thuyen_tb_loaitau" FromRole="tb_thuyen" ToRole="tb_loaitau" />
+    <NavigationProperty Name="tb_tau_doanhnghiep" Relationship="Self.FK_tb_tau_doanhnghiep_tb_thuyen" FromRole="tb_thuyen" ToRole="tb_tau_doanhnghiep" />
+    <NavigationProperty Name="tb_thuyenvien" Relationship="Self.FK_tb_thuyen_tb_thuyenvien" FromRole="tb_thuyen" ToRole="tb_thuyenvien" />
+  </EntityType>
+  <EntityType Name="tb_thuyenvien">
+    <Key>
+      <PropertyRef Name="MaThuyenVien" />
+    </Key>
+    <Property Name="MaThuyenVien" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HoTenLot" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GioiTinh" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="NgaySinh" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="NoiSinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChiThuongTru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="SoDienThoai" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="SoCMND" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="NgayCap" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="NoiCap" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TaiKhoan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tb_danhsachthuyenvien" Relationship="Self.FK_tb_danhsachthuyenvien_tb_thuyenvien" FromRole="tb_thuyenvien" ToRole="tb_danhsachthuyenvien" />
+    <NavigationProperty Name="tb_taikhoan" Relationship="Self.FK_tb_thuyenvien_tb_taikhoan" FromRole="tb_thuyenvien" ToRole="tb_taikhoan" />
+    <NavigationProperty Name="tb_thuyen" Relationship="Self.FK_tb_thuyen_tb_thuyenvien" FromRole="tb_thuyenvien" ToRole="tb_thuyen" />
+  </EntityType>
+  <Association Name="FK_tb_loaitau_tb_coquan">
+    <End Role="tb_coquan" Type="Self.tb_coquan" Multiplicity="0..1" />
+    <End Role="tb_loaitau" Type="Self.tb_loaitau" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_coquan">
+        <PropertyRef Name="MaCoQuan" />
+      </Principal>
+      <Dependent Role="tb_loaitau">
+        <PropertyRef Name="CoQuanThem" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_tau_doanhnghiep_tb_coquan">
+    <End Role="tb_coquan" Type="Self.tb_coquan" Multiplicity="0..1" />
+    <End Role="tb_tau_doanhnghiep" Type="Self.tb_tau_doanhnghiep" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_coquan">
+        <PropertyRef Name="MaCoQuan" />
+      </Principal>
+      <Dependent Role="tb_tau_doanhnghiep">
+        <PropertyRef Name="CoQuanPheDuyet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_thuyen_tb_coquan">
+    <End Role="tb_coquan" Type="Self.tb_coquan" Multiplicity="0..1" />
+    <End Role="tb_thuyen" Type="Self.tb_thuyen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_coquan">
+        <PropertyRef Name="MaCoQuan" />
+      </Principal>
+      <Dependent Role="tb_thuyen">
+        <PropertyRef Name="CoQuanPheDuyet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_danhsachthuyenvien_tb_thuyen">
+    <End Role="tb_thuyen" Type="Self.tb_thuyen" Multiplicity="1" />
+    <End Role="tb_danhsachthuyenvien" Type="Self.tb_danhsachthuyenvien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_thuyen">
+        <PropertyRef Name="MaTau" />
+      </Principal>
+      <Dependent Role="tb_danhsachthuyenvien">
+        <PropertyRef Name="Tau" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_danhsachthuyenvien_tb_thuyenvien">
+    <End Role="tb_thuyenvien" Type="Self.tb_thuyenvien" Multiplicity="1" />
+    <End Role="tb_danhsachthuyenvien" Type="Self.tb_danhsachthuyenvien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_thuyenvien">
+        <PropertyRef Name="MaThuyenVien" />
+      </Principal>
+      <Dependent Role="tb_danhsachthuyenvien">
+        <PropertyRef Name="ThuyenVien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_tau_doanhnghiep_tb_doanhnghiep">
+    <End Role="tb_doanhnghiep" Type="Self.tb_doanhnghiep" Multiplicity="1" />
+    <End Role="tb_tau_doanhnghiep" Type="Self.tb_tau_doanhnghiep" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_doanhnghiep">
+        <PropertyRef Name="MSDoanhNghiep" />
+      </Principal>
+      <Dependent Role="tb_tau_doanhnghiep">
+        <PropertyRef Name="DoanhNghiep" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_thuyen_tb_loaitau">
+    <End Role="tb_loaitau" Type="Self.tb_loaitau" Multiplicity="0..1" />
+    <End Role="tb_thuyen" Type="Self.tb_thuyen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_loaitau">
+        <PropertyRef Name="LoaiTau" />
+      </Principal>
+      <Dependent Role="tb_thuyen">
+        <PropertyRef Name="LoaiTau" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_thuyenvien_tb_taikhoan">
+    <End Role="tb_taikhoan" Type="Self.tb_taikhoan" Multiplicity="0..1" />
+    <End Role="tb_thuyenvien" Type="Self.tb_thuyenvien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_taikhoan">
+        <PropertyRef Name="TenDangNhap" />
+      </Principal>
+      <Dependent Role="tb_thuyenvien">
+        <PropertyRef Name="TaiKhoan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_tau_doanhnghiep_tb_thuyen">
+    <End Role="tb_thuyen" Type="Self.tb_thuyen" Multiplicity="1" />
+    <End Role="tb_tau_doanhnghiep" Type="Self.tb_tau_doanhnghiep" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_thuyen">
+        <PropertyRef Name="MaTau" />
+      </Principal>
+      <Dependent Role="tb_tau_doanhnghiep">
+        <PropertyRef Name="Tau" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_thuyen_tb_thuyenvien">
+    <End Role="tb_thuyenvien" Type="Self.tb_thuyenvien" Multiplicity="0..1" />
+    <End Role="tb_thuyen" Type="Self.tb_thuyen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_thuyenvien">
+        <PropertyRef Name="MaThuyenVien" />
+      </Principal>
+      <Dependent Role="tb_thuyen">
+        <PropertyRef Name="ChuTau" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="db_thongtinthuyenvienEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tb_coquan" EntityType="Self.tb_coquan" />
+    <EntitySet Name="tb_danhsachthuyenvien" EntityType="Self.tb_danhsachthuyenvien" />
+    <EntitySet Name="tb_doanhnghiep" EntityType="Self.tb_doanhnghiep" />
+    <EntitySet Name="tb_loaitau" EntityType="Self.tb_loaitau" />
+    <EntitySet Name="tb_taikhoan" EntityType="Self.tb_taikhoan" />
+    <EntitySet Name="tb_tau_doanhnghiep" EntityType="Self.tb_tau_doanhnghiep" />
+    <EntitySet Name="tb_thuyen" EntityType="Self.tb_thuyen" />
+    <EntitySet Name="tb_thuyenvien" EntityType="Self.tb_thuyenvien" />
+    <AssociationSet Name="FK_tb_loaitau_tb_coquan" Association="Self.FK_tb_loaitau_tb_coquan">
+      <End Role="tb_coquan" EntitySet="tb_coquan" />
+      <End Role="tb_loaitau" EntitySet="tb_loaitau" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_tau_doanhnghiep_tb_coquan" Association="Self.FK_tb_tau_doanhnghiep_tb_coquan">
+      <End Role="tb_coquan" EntitySet="tb_coquan" />
+      <End Role="tb_tau_doanhnghiep" EntitySet="tb_tau_doanhnghiep" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_thuyen_tb_coquan" Association="Self.FK_tb_thuyen_tb_coquan">
+      <End Role="tb_coquan" EntitySet="tb_coquan" />
+      <End Role="tb_thuyen" EntitySet="tb_thuyen" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_danhsachthuyenvien_tb_thuyen" Association="Self.FK_tb_danhsachthuyenvien_tb_thuyen">
+      <End Role="tb_thuyen" EntitySet="tb_thuyen" />
+      <End Role="tb_danhsachthuyenvien" EntitySet="tb_danhsachthuyenvien" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_danhsachthuyenvien_tb_thuyenvien" Association="Self.FK_tb_danhsachthuyenvien_tb_thuyenvien">
+      <End Role="tb_thuyenvien" EntitySet="tb_thuyenvien" />
+      <End Role="tb_danhsachthuyenvien" EntitySet="tb_danhsachthuyenvien" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_tau_doanhnghiep_tb_doanhnghiep" Association="Self.FK_tb_tau_doanhnghiep_tb_doanhnghiep">
+      <End Role="tb_doanhnghiep" EntitySet="tb_doanhnghiep" />
+      <End Role="tb_tau_doanhnghiep" EntitySet="tb_tau_doanhnghiep" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_thuyen_tb_loaitau" Association="Self.FK_tb_thuyen_tb_loaitau">
+      <End Role="tb_loaitau" EntitySet="tb_loaitau" />
+      <End Role="tb_thuyen" EntitySet="tb_thuyen" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_thuyenvien_tb_taikhoan" Association="Self.FK_tb_thuyenvien_tb_taikhoan">
+      <End Role="tb_taikhoan" EntitySet="tb_taikhoan" />
+      <End Role="tb_thuyenvien" EntitySet="tb_thuyenvien" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_tau_doanhnghiep_tb_thuyen" Association="Self.FK_tb_tau_doanhnghiep_tb_thuyen">
+      <End Role="tb_thuyen" EntitySet="tb_thuyen" />
+      <End Role="tb_tau_doanhnghiep" EntitySet="tb_tau_doanhnghiep" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_thuyen_tb_thuyenvien" Association="Self.FK_tb_thuyen_tb_thuyenvien">
+      <End Role="tb_thuyenvien" EntitySet="tb_thuyenvien" />
+      <End Role="tb_thuyen" EntitySet="tb_thuyen" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

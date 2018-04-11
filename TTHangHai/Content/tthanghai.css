@@ -1,0 +1,26 @@
+﻿.header-top-fixed {
+    background-image: url(../images/header.jpg);
+    height: 90px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background-position: right 0px;
+    background-repeat: no-repeat;
+    background-color: #3563c1;
+    z-index: 999999;
+}
+.header-top-fixed .logo-image {
+    height: 80px;
+    padding: 5px;
+}
+.navbar.navbar-inverse.navbar-fixed-top{
+    top: 90px;
+    background-color: #2315a0;
+}
+.container.body-content{
+    margin-top: 90px;
+}
+.navbar-inverse .navbar-nav > li > a{
+    color: #e8ebef;
+    font-weight: 700;
+}

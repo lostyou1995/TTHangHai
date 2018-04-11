@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "PhuongThucDangKy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<center><h2>CHỌN HÌNH THỨC ĐĂNG KÝ TÀI KHOẢN </h2></center>
+<br />
+<br />
+<br />
+@using (Html.BeginForm("PhuongThucDangKy", "TaiKhoan", FormMethod.Post, new { @class = "form-horizontal", role = "form", @style="font-size: 12pt;" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="radio">
+            <label><input type="radio" value="tkcn" name="loaidk" checked="checked">Tài khoản cá nhân (Thực hiện thủ tục hành chính về đăng ký thuyền viên)</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="radio">
+            <label><input type="radio" value="tkdn" name="loaidk">Tài khoản đại diện cho tổ chức (Thực hiện thủ tục hành chính về đăng ký thuyền viên)</label>
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <center><input type="submit" class="btn btn-primary" value="Tiếp tục" /></center>
+}

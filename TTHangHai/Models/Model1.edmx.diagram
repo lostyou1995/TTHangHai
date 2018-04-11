@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="68c1c7ff146a48c9b81b8cc985138b42" Name="Diagram1">
+        <EntityTypeShape EntityType="db_thongtinthuyenvienModel.tb_coquan" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_thongtinthuyenvienModel.tb_danhsachthuyenvien" Width="1.5" PointX="7.5" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_thongtinthuyenvienModel.tb_doanhnghiep" Width="1.5" PointX="8.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_thongtinthuyenvienModel.tb_loaitau" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_thongtinthuyenvienModel.tb_taikhoan" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_thongtinthuyenvienModel.tb_tau_doanhnghiep" Width="1.5" PointX="10.5" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_thongtinthuyenvienModel.tb_thuyen" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_thongtinthuyenvienModel.tb_thuyenvien" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="db_thongtinthuyenvienModel.FK_tb_loaitau_tb_coquan" ManuallyRouted="false" />
+        <AssociationConnector Association="db_thongtinthuyenvienModel.FK_tb_tau_doanhnghiep_tb_coquan" ManuallyRouted="false" />
+        <AssociationConnector Association="db_thongtinthuyenvienModel.FK_tb_thuyen_tb_coquan" ManuallyRouted="false" />
+        <AssociationConnector Association="db_thongtinthuyenvienModel.FK_tb_danhsachthuyenvien_tb_thuyen" ManuallyRouted="false" />
+        <AssociationConnector Association="db_thongtinthuyenvienModel.FK_tb_danhsachthuyenvien_tb_thuyenvien" ManuallyRouted="false" />
+        <AssociationConnector Association="db_thongtinthuyenvienModel.FK_tb_tau_doanhnghiep_tb_doanhnghiep" ManuallyRouted="false" />
+        <AssociationConnector Association="db_thongtinthuyenvienModel.FK_tb_thuyen_tb_loaitau" ManuallyRouted="false" />
+        <AssociationConnector Association="db_thongtinthuyenvienModel.FK_tb_thuyenvien_tb_taikhoan" ManuallyRouted="false" />
+        <AssociationConnector Association="db_thongtinthuyenvienModel.FK_tb_tau_doanhnghiep_tb_thuyen" ManuallyRouted="false" />
+        <AssociationConnector Association="db_thongtinthuyenvienModel.FK_tb_thuyen_tb_thuyenvien" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

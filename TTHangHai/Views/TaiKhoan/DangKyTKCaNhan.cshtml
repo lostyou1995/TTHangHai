@@ -1,0 +1,115 @@
+﻿@model TTHangHai.Models.DKTaiKhoanCaNhan
+@{
+    ViewBag.Title = "Đăng ký tài khoản cá nhân";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Đăng ký hồ sơ cá nhân</h1>
+@if (ViewBag.Message != null) { 
+    <div class="alert alert-danger">
+
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Lỗi!</strong>
+        @foreach (var err in ViewBag.Message)
+        {
+            @err
+            <br/>
+        }
+    
+    </div>
+}
+@using (Html.BeginForm("DangKyTKCaNhan", "TaiKhoan", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <h4><b>Thông tin tài khoản</b></h4>
+    <div class="form-group">
+        <label class="control-label col-sm-3" for="email">Email(*):</label>
+        <div class="col-sm-9">
+            <input type="email" name="email" id="email" class="form-control" value="@ViewBag.email"   placeholder="Nhập email" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-3" for="pwd">Mật khẩu(*):</label>
+        <div class="col-sm-9">
+            <input type="password" name="password" value="@ViewBag.password" class="form-control" id="pwd" pattern="^\S{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Mật khẩu tối thiểu 6 ký tự' : ''); if(this.checkValidity()) form.password1.pattern = this.value;"  oninvalid="this.setCustomValidity('Mật khẩu không được để trống')" placeholder="Nhập mật khẩu">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-3" for="pwd1">Nhập lại mật khẩu(*):</label>
+        <div class="col-sm-9">
+            <input type="password" name="password1" class="form-control" id="pwd1" pattern="^\S{6,}$"  placeholder="Nhập lại mật khẩu">
+        </div>
+    </div>
+    <hr/>
+    <h4><b>Thông tin chủ quản</b></h4>
+    <div class="form-group">
+        <label class="control-label col-sm-3" for="fullname">Họ và tên(*):</label>
+        <div class="col-sm-9">
+            <input type="text" name="fullname" class="form-control" id="fullname" value="@ViewBag.fullname"   placeholder="Nhập họ và tên">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-3" for="sex">Giới tính(*):</label>
+        <div class="col-sm-9">
+            <label class="radio-inline"><input type="radio" name="sex" id="sex" checked="@(ViewBag.sex=="Nam"?"Checked":"")" value="Nam">Nam</label>
+            <label class="radio-inline"><input type="radio" name="sex" value="Nữ" checked="@(ViewBag.sex=="Nữ"?"Checked":"")">Nữ</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-3" for="birthday">Ngày sinh(*):</label>
+        <div class="col-sm-9">
+            <input type="date" name="birthday" class="form-control" id="birthday" value="@(ViewBag.birthday!=null?ViewBag.birthday:DateTime.Now.ToString("yyyy-MM-dd"))" data-date-format="dd/mm/yyyy" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-3" for="">Nơi sinh(*):</label>
+        <div class="col-sm-9">
+            @ProvincialHelper.Provincial("provincial")
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-3" for="address">Địa chỉ thường trú(*):</label>
+        <div class="col-sm-9">
+            <input type="text" name="address" class="form-control" id="address" value="@ViewBag.address" placeholder="Nhập địa chỉ thường trú">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-3" for="mobile">Điện thoại di động(*):</label>
+        <div class="col-sm-9">
+            <input type="text" name="mobile" class="form-control" id="mobile" value="@ViewBag.mobile" placeholder="Nhập số điện thoại di động">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-3" for="phone">Điện thoại:</label>
+        <div class="col-sm-9">
+            <input type="text" name="phone" class="form-control" id="phone" value="@ViewBag.phone" placeholder="Nhập số điện thoại">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-3" for="idcard">Số CMND(*):</label>
+        <div class="col-sm-9">
+            <input type="text" name="idcard" class="form-control" id="idcard" value="@ViewBag.idcard" placeholder="Nhập số chứng minh nhân dân">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-3" for="idcardday">Ngày cấp(*):</label>
+        <div class="col-sm-9">
+            <input type="date" name="idcardday" class="form-control" id="idcardday" value="@(ViewBag.idcardday != null ? ViewBag.idcardday : DateTime.Now.ToString("yyyy-MM-dd"))" data-date-format="dd/mm/yyyy">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-3" for="">Nơi cấp(*):</label>
+        <div class="col-sm-9">
+            @ProvincialHelper.Provincial("noicap")
+        </div>
+    </div>
+    <hr />
+    <div class="checkbox">
+        <label><input type="checkbox" name="Acept" value="true">Tôi đã đọc và đồng ý với quy định về đăng ký và sử dụng dịch vụ tại trang web này (<a href="http://dichvucong.vinamarine.gov.vn/dktb/quy-dinh-su-dung-dich-vu.html">Xem quy định sử dụng dịch vụ</a>)</label>
+    </div>
+    <hr />
+    <div class="form-group">
+        <label class="control-label col-sm-3" for=""></label>
+        <div class="col-sm-9">
+            <input type="submit" value="Đăng ký" class="btn btn-primary" />
+        </div>
+    </div>
+}
