@@ -31,7 +31,7 @@ namespace TTHangHai.Controllers
             ViewBag.email = email;
             if (string.IsNullOrEmpty(email))
             {
-                arrMess.Add("Email là bắt buộc");
+                arrMess.Add("Email là bắt buộcccccccccccccc");
             }
             ViewBag.password = password;
             if (string.IsNullOrEmpty(password))
