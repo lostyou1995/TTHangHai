@@ -1,0 +1,88 @@
+﻿@model IEnumerable<TTHangHai.Models.tb_thuyen>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SoHieu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TenTau)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IMO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuocTich)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TongDungTichMay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TongCSMayChinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrangThai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tb_coquan.TenCoQuan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tb_loaitau.TenLoai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tb_thuyenvien.HoTenLot)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoHieu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenTau)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IMO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuocTich)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TongDungTichMay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TongCSMayChinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrangThai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tb_coquan.TenCoQuan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tb_loaitau.TenLoai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tb_thuyenvien.HoTenLot)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaTau }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaTau }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaTau })
+        </td>
+    </tr>
+}
+
+</table>

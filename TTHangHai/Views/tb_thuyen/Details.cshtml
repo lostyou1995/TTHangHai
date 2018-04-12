@@ -1,0 +1,99 @@
+﻿@model TTHangHai.Models.tb_thuyen
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tb_thuyen</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SoHieu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoHieu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenTau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenTau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IMO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IMO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuocTich)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuocTich)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TongDungTichMay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TongDungTichMay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TongCSMayChinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TongCSMayChinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrangThai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrangThai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tb_coquan.TenCoQuan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tb_coquan.TenCoQuan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tb_loaitau.TenLoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tb_loaitau.TenLoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tb_thuyenvien.HoTenLot)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tb_thuyenvien.HoTenLot)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaTau }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

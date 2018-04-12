@@ -162,6 +162,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Common\MD5Hash.cs" />
+    <Compile Include="Controllers\tb_thuyenController.cs" />
     <Compile Include="Helpers\ProvincialHelper.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TaiKhoanController.cs" />
@@ -297,9 +298,19 @@
     <Content Include="Views\TaiKhoan\MessageRegister.cshtml" />
     <Content Include="Views\TaiKhoan\Login.cshtml" />
     <Content Include="Views\TaiKhoan\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\tb_thuyen\Create.cshtml" />
+    <Content Include="Views\tb_thuyen\Delete.cshtml" />
+    <Content Include="Views\tb_thuyen\Details.cshtml" />
+    <Content Include="Views\tb_thuyen\Edit.cshtml" />
+    <Content Include="Views\tb_thuyen\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\admin\css\" />
+    <Folder Include="Content\admin\icons\" />
+    <Folder Include="Content\admin\images\" />
+    <Folder Include="Content\admin\js\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

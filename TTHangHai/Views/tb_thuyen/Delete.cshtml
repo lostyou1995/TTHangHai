@@ -1,0 +1,105 @@
+﻿@model TTHangHai.Models.tb_thuyen
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>tb_thuyen</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SoHieu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoHieu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenTau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenTau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IMO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IMO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuocTich)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuocTich)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TongDungTichMay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TongDungTichMay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TongCSMayChinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TongCSMayChinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrangThai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrangThai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tb_coquan.TenCoQuan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tb_coquan.TenCoQuan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tb_loaitau.TenLoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tb_loaitau.TenLoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tb_thuyenvien.HoTenLot)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tb_thuyenvien.HoTenLot)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
