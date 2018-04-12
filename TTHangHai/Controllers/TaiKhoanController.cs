@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 using TTHangHai.Models;
+using System.Linq;
+using System.Diagnostics;
 
 namespace TTHangHai.Controllers
 {
     public class TaiKhoanController : Controller
     {
+        private db_thongtinthuyenvienEntities db = new db_thongtinthuyenvienEntities();
         // GET: TaiKhoan
         public ActionResult PhuongThucDangKy(string loaidk)
         {
@@ -31,7 +34,7 @@ namespace TTHangHai.Controllers
             ViewBag.email = email;
             if (string.IsNullOrEmpty(email))
             {
-                arrMess.Add("Email là bắt buộcccccccccccccc");
+                arrMess.Add("Email là bắt buộcc");
             }
             ViewBag.password = password;
             if (string.IsNullOrEmpty(password))
@@ -157,14 +160,38 @@ namespace TTHangHai.Controllers
             return View();
         }
 
-        public ActionResult MessageRegister(int type)
+        public ActionResult MessageRegister()
         {
-            return View(type);
+            return View();
         }
 
         public ActionResult Login()
         {
             return View();
+        }
+        [HttpPost]
+        public ActionResult Login(LoginViewModel model) {
+            System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create();
+            var matKhau = MD5Hash.GetMd5Hash(md5, model.Password);
+            tb_taikhoan taiKhoan = db.tb_taikhoan.SingleOrDefault(x => x.EmailDangKy.Equals(model.Email) && x.MatKhau.Equals(matKhau));
+            try
+            {
+                if (taiKhoan == null) {
+                    ViewBag.MessageLogin = "Tài khoản hoặc mật khẩu không đúng.";
+                    return View();
+                } else {
+                    Session["taiKhoan"] = taiKhoan;
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            catch (Exception e) {
+                Debug.WriteLine("Error: " + e.Message.ToString());
+                return View();
+            } 
+        }
+        public ActionResult DangXuat() {
+            Session.Abandon();
+            return RedirectToAction("Login");
         }
     }
 }

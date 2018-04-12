@@ -50,6 +50,6 @@ C:\Users\lost_you\Desktop\TTHangHai\TTHangHai\bin\Microsoft.Owin.Security.OAuth.
 C:\Users\lost_you\Desktop\TTHangHai\TTHangHai\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\lost_you\Desktop\TTHangHai\TTHangHai\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\lost_you\Desktop\TTHangHai\TTHangHai\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\lost_you\Desktop\TTHangHai\TTHangHai\obj\Debug\TTHangHai.csprojResolveAssemblyReference.cache
 C:\Users\lost_you\Desktop\TTHangHai\TTHangHai\obj\Debug\TTHangHai.dll
 C:\Users\lost_you\Desktop\TTHangHai\TTHangHai\obj\Debug\TTHangHai.pdb
+C:\Users\lost_you\Desktop\TTHangHai\TTHangHai\obj\Debug\TTHangHai.csprojResolveAssemblyReference.cache

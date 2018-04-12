@@ -11,6 +11,7 @@
             {
                 @Html.AntiForgeryToken()
                 <h4>Sử dụng tài khoản đã đăng ký để đăng nhập</h4>
+                <h5 class="text-danger">@ViewBag.MessageLogin</h5>
                 <hr />
                 
                 <div class="form-group">
@@ -18,7 +19,7 @@
                         Email
                     </label>
                     <div class="col-md-10">
-                        <input type="email" name="mail" required class="form-control" />
+                        <input type="email" name="Email" id="Email" required class="form-control" />
                     </div>
                 </div>
                 <div class="form-group">
@@ -26,7 +27,7 @@
                         Mật khẩu
                     </label>
                     <div class="col-md-10">
-                        <input type="password" name="password" required class="form-control" />
+                        <input type="password" name="Password" id="Password" required class="form-control" />
                     </div>
                 </div>
                 <div class="form-group">
