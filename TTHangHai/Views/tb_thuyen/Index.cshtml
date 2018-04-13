@@ -1,88 +1,118 @@
 ﻿@model IEnumerable<TTHangHai.Models.tb_thuyen>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Danh Sách Tàu Thuyền";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+<div class="container-fluid">
+    <!-- Start Page Content -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <h1 class="text-primary text-center">Danh Sách Tàu Thuyền</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <a href="@Url.Action("Create")"><i class="fa fa-plus" style="font-size:24px"></i> Thêm mới</a>
+                <div class="card-body">
+                    <div class="table-responsive m-t-40">
+                        <table id="myTable" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.SoHieu)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.TenTau)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.IMO)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.QuocTich)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.TongDungTichMay)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.TongCSMayChinh)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.TrangThai)
+                                    </th>
+                                    <th>
+                                        Tên cơ quan
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.tb_loaitau.TenLoai)
+                                    </th>
+                                    <th>
+                                        Họ tên
+                                    </th>
+                                    <th>Xóa</th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-<h2>Index</h2>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.SoHieu)
+                                        </td>
+                                        <td>
+                                            <a href="@Url.Action("Edit",new { id = item.MaTau, TenTau = item.TenTau, SoHieu = item.SoHieu })">@Html.DisplayFor(modelItem => item.TenTau)</a>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.IMO)
+                                        </td>
+                                        <td class="text-center">
+                                            @Html.DisplayFor(modelItem => item.QuocTich)
+                                        </td>
+                                        <td class="text-center">
+                                            @Html.DisplayFor(modelItem => item.TongDungTichMay)
+                                        </td>
+                                        <td class="text-center">
+                                            @Html.DisplayFor(modelItem => item.TongCSMayChinh)
+                                        </td>
+                                        @{
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.SoHieu)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TenTau)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IMO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.QuocTich)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TongDungTichMay)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TongCSMayChinh)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TrangThai)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tb_coquan.TenCoQuan)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tb_loaitau.TenLoai)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tb_thuyenvien.HoTenLot)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.SoHieu)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenTau)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IMO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.QuocTich)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TongDungTichMay)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TongCSMayChinh)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TrangThai)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tb_coquan.TenCoQuan)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tb_loaitau.TenLoai)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tb_thuyenvien.HoTenLot)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaTau }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaTau }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaTau })
-        </td>
-    </tr>
-}
-
-</table>
+                                            if (item.TrangThai == true)
+                                            {
+                                                <td class="text-success">
+                                                    Đã duyệt
+                                                </td>
+                                            }
+                                            else
+                                            {
+                                                <td class="text-danger">
+                                                    Chưa duyệt
+                                                </td>
+                                            }
+                                        }
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.tb_coquan.TenCoQuan)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.tb_loaitau.TenLoai)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.tb_thuyenvien.HoTenLot)
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="@Url.Action("Delete","tb_thuyen",new { id = item.MaTau, TenTau = item.TenTau, SoHieu = item.SoHieu})"><i class="fa fa-remove" style="font-size:24px;color:red"></i>
+</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

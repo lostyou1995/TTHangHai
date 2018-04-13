@@ -162,6 +162,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Common\MD5Hash.cs" />
+    <Compile Include="Controllers\tb_loaitauController.cs" />
     <Compile Include="Controllers\tb_thuyenController.cs" />
     <Compile Include="Helpers\ProvincialHelper.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -300,10 +301,14 @@
     <Content Include="Views\TaiKhoan\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\tb_thuyen\Create.cshtml" />
     <Content Include="Views\tb_thuyen\Delete.cshtml" />
-    <Content Include="Views\tb_thuyen\Details.cshtml" />
     <Content Include="Views\tb_thuyen\Edit.cshtml" />
     <Content Include="Views\tb_thuyen\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\tb_loaitau\Create.cshtml" />
+    <Content Include="Views\tb_loaitau\Delete.cshtml" />
+    <Content Include="Views\tb_loaitau\Details.cshtml" />
+    <Content Include="Views\tb_loaitau\Edit.cshtml" />
+    <Content Include="Views\tb_loaitau\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

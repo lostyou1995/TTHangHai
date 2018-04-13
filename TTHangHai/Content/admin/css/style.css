@@ -100,6 +100,7 @@ html {
 }
 a:focus,
 a:hover {
+	color:#007bff
   text-decoration: none;
 }
 a.link {
@@ -661,12 +662,16 @@ h6 {
     column-count: 2;
   }
 }
-a,
+
 button {
   outline: none!important;
   text-decoration: none!important;
   color: #99abb4;
   transition: all 0.2s ease 0s;
+}
+a{
+	color: ##007bff;
+	transition: all 0.2s ease 0s;
 }
 a.active,
 button.active,
@@ -5414,8 +5419,7 @@ tbody tr td:last-child {
 .table > tfoot > tr > th,
 .table > thead > tr > td,
 .table > thead > tr > th {
-  line-height: 32px;
-  vertical-align: top;
+  vertical-align: middle;
 }
 .table > thead > tr > th {
   border-bottom: 1px solid #e7e7e7;

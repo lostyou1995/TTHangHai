@@ -1,0 +1,61 @@
+﻿@model TTHangHai.Models.tb_loaitau
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+
+                    <h3>Bạn có chắc chắn muốn xóa không???</h3>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.LoaiTau)</th>
+                                <th>@Html.DisplayNameFor(model => model.TenLoai)</th>
+                                <th>@Html.DisplayNameFor(model => model.CoQuanThem)</th>
+                                <th>@Html.DisplayNameFor(model => model.TrangThai)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@Html.DisplayFor(model => model.LoaiTau)</td>
+                                <td>@Html.DisplayFor(model => model.TenLoai)</td>
+                                <td>@Html.DisplayFor(model => model.tb_coquan.TenCoQuan)</td>
+
+                                @{
+
+                                    if (Model.TrangThai == true)
+                                    {
+                                        <td class="text-success">
+                                            Đã duyệt
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td class="text-danger">
+                                            Chưa duyệt
+                                        </td>
+                                    }
+                                }
+                            </tr>
+                        </tbody>
+                    </table>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-actions no-color" style="padding-top:5%">
+                            <input type="submit" value="Delete" class="btn btn-danger" />
+                            <a href="@Url.Action("Index")" class="btn btn-default">Hủy bỏ</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

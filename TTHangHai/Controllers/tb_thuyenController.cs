@@ -54,6 +54,8 @@ namespace TTHangHai.Controllers
         {
             if (ModelState.IsValid)
             {
+                tb_thuyen.CoQuanPheDuyet = 1;
+                tb_thuyen.TrangThai = false;
                 db.tb_thuyen.Add(tb_thuyen);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -66,7 +68,7 @@ namespace TTHangHai.Controllers
         }
 
         // GET: tb_thuyen/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id, string TenTau, string SoHieu)
         {
             if (id == null)
             {
@@ -103,7 +105,7 @@ namespace TTHangHai.Controllers
         }
 
         // GET: tb_thuyen/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id, string TenTau, string SoHieu)
         {
             if (id == null)
             {

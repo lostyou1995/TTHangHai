@@ -1,0 +1,79 @@
+﻿@model IEnumerable<TTHangHai.Models.tb_loaitau>
+
+@{
+    ViewBag.Title = "Danh Sách Loại Tàu";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="container-fluid">
+    <!-- Start Page Content -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <h1 class="text-primary text-center">Danh Sách Các Loại Tàu Thuyền</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-12">
+
+            <div class="card">
+                <a href="@Url.Action("Create")"><i class="fa fa-plus" style="font-size:24px"></i> Thêm mới</a>
+
+                <div class="card-body">
+                    <div class="table-responsive m-t-40">
+                        <table id="myTable" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.TenLoai)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.TrangThai)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.tb_coquan.TenCoQuan)
+                                    </th>
+                                    <th class="text-center">Xóa</th>
+                                </tr>
+
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+
+                                    <tr>
+                                        <td>
+                                            <a href="@Url.Action("Edit",new { id = item.LoaiTau, LoaiTau = item.LoaiTau, TenLoai = item.TenLoai })">@Html.DisplayFor(modelItem => item.TenLoai)</a>
+                                        </td>
+                                        @{
+                                            if (item.TrangThai == true)
+                                            {
+                                                <td class="text-success">
+                                                    Đã duyệt
+                                                </td>
+                                            }
+                                            else
+                                            {
+                                                <td class="text-danger">
+                                                    Chưa duyệt
+                                                </td>
+                                            }
+
+                                        }
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.tb_coquan.TenCoQuan)
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="@Url.Action("Delete",new { id = item.LoaiTau,LoaiTau = item.LoaiTau, TenLoai = item.TenLoai})"><i class="fa fa-remove" style="font-size:24px;color:red"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
